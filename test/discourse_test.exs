@@ -1,0 +1,2 @@
+defmodule DiscourseApiTest do
+end
