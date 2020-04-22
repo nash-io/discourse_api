@@ -13,6 +13,13 @@ defmodule DiscourseApi.DefaultImpl do
     get(endpoint)
   end
 
+  @spec get_user_by_id(String.t()) :: {:ok | :error, map}
+  def get_user_by_id(id) do
+    endpoint = base_url() <> "/admin/users/#{id}.json"
+
+    get(endpoint)
+  end
+
   @spec get_user_by_external_id(String.t()) :: {:ok | :error, map}
   def get_user_by_external_id(external_id) do
     endpoint = base_url() <> "u/by-external/#{external_id}.json"

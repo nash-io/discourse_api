@@ -9,6 +9,11 @@ defmodule DiscourseApi do
     impl().get_active_user(options)
   end
 
+  @callback get_user_by_id(String.t()) :: {atom, map | atom}
+  def get_user_by_id(id) do
+    impl().get_user_by_id(id)
+  end
+
   @callback get_user_by_external_id(String.t()) :: {atom, map | atom}
   def get_user_by_external_id(external_id) do
     impl().get_user_by_external_id(external_id)
@@ -20,6 +25,7 @@ defmodule DiscourseApi do
   end
 
   @callback unsilence(non_neg_integer) :: {:ok | :error, map}
+  @spec unsilence(any) :: any
   def unsilence(id) do
     impl().unsilence(id)
   end
