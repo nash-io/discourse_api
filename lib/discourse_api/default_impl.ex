@@ -55,14 +55,14 @@ defmodule DiscourseApi.DefaultImpl do
       {:ok, infos}
     else
       {:ok, %Response{body: body}} ->
-        Logger.warn(fn ->
+        Logger.info(fn ->
           inspect(body)
         end)
 
         {:error, :http}
 
       {:error, body = %Jason.DecodeError{}} ->
-        Logger.warn(fn ->
+        Logger.info(fn ->
           "could not decode body: #{inspect(body)}"
         end)
     end
@@ -75,14 +75,14 @@ defmodule DiscourseApi.DefaultImpl do
       {:ok, infos}
     else
       {:ok, %Response{body: body}} ->
-        Logger.warn(fn ->
+        Logger.info(fn ->
           inspect(body)
         end)
 
         {:error, :http}
 
       {:error, body = %Jason.DecodeError{}} ->
-        Logger.warn(fn ->
+        Logger.info(fn ->
           "could not decode body: #{inspect(body)}"
         end)
     end
