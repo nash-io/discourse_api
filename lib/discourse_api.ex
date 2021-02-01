@@ -30,5 +30,10 @@ defmodule DiscourseApi do
     impl().unsilence(id)
   end
 
+  @callback change_user_email(String.t(), String.t()) :: {:ok | :error, map}
+  def change_user_email(username, new_email) do
+    impl().change_user_email(username, new_email)
+  end
+
   def impl, do: Application.fetch_env!(:discourse_api, :impl)
 end
