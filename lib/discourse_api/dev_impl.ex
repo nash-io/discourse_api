@@ -235,4 +235,8 @@ defmodule DiscourseApi.DevImpl do
        "success" => "string"
      }}
   end
+
+  def change_user_email(_) do
+    {:ok, %{}}
+  end
 end
