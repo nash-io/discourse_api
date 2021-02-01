@@ -48,6 +48,12 @@ defmodule DiscourseApi.DefaultImpl do
     put(endpoint)
   end
 
+  def change_user_email(username, new_email) do
+    endpoint = base_url() <> "users/#{username}/preferences/email"
+
+    put(endpoint, Jason.encode!(%{email: new_email}))
+  end
+
   def get(endpoint) do
     with {:ok, %Response{body: body, status_code: 200}} <-
            HttpClient.get(endpoint, headers(:json)),
