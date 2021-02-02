@@ -51,7 +51,7 @@ defmodule DiscourseApi.DefaultImpl do
   def change_user_email(username, new_email) do
     endpoint = base_url() <> "users/#{username}/preferences/email"
 
-    put(endpoint, Jason.encode!(%{email: new_email}))
+    put(endpoint, Jason.encode!(%{email: new_email}), headers(:json))
   end
 
   def get(endpoint) do
@@ -74,9 +74,9 @@ defmodule DiscourseApi.DefaultImpl do
     end
   end
 
-  def put(endpoint, payload \\ "") do
+  def put(endpoint, payload \\ "", headers \\ headers(:multipart)) do
     with {:ok, %Response{body: body, status_code: 200}} <-
-           HttpClient.put(endpoint, payload, headers(:multipart)),
+           HttpClient.put(endpoint, payload, headers),
          {:ok, infos} <- Jason.decode(body) do
       {:ok, infos}
     else
