@@ -236,7 +236,7 @@ defmodule DiscourseApi.DevImpl do
      }}
   end
 
-  def change_user_email(_) do
+  def change_user_email(_, _) do
     {:ok, %{}}
   end
 end
