@@ -86,19 +86,17 @@ defmodule DiscourseApi.DefaultImpl do
         end)
 
         {:error, :http}
-
-      {:error, body = %Jason.DecodeError{}} ->
-        Logger.info(fn ->
-          "could not decode body: #{inspect(body)}"
-        end)
     end
   end
 
   defp maybe_decode(body) do
-    if(String.length(body) > 0) do
-      Jason.decode(body)
-    else
-      {:ok, ""}
+    case Jason.decode(body) do
+      {:ok, _} = success ->
+        success
+
+      {:error, error} ->
+        Logger.info("body: #{body} can't be decoded: #{inspect(error)}")
+        {:ok, ""}
     end
   end
 
