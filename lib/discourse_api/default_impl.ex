@@ -77,7 +77,7 @@ defmodule DiscourseApi.DefaultImpl do
   def put(endpoint, payload \\ "", headers \\ headers(:multipart)) do
     with {:ok, %Response{body: body, status_code: 200}} <-
            HttpClient.put(endpoint, payload, headers),
-         {:ok, infos} <- Jason.decode(body) do
+         {:ok, infos} <- maybe_decode(body) do
       {:ok, infos}
     else
       {:ok, %Response{body: body}} ->
@@ -91,6 +91,14 @@ defmodule DiscourseApi.DefaultImpl do
         Logger.info(fn ->
           "could not decode body: #{inspect(body)}"
         end)
+    end
+  end
+
+  defp maybe_decode(body) do
+    if(String.length(body) > 0) do
+      Jason.decode(body)
+    else
+      {:ok, ""}
     end
   end
 
