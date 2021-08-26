@@ -100,7 +100,6 @@ defmodule DiscourseApi.DevImpl do
          "created_at" => "2019-10-28T12:57:17.253Z",
          "external_avatar_url" => nil,
          "external_card_background_url" => nil,
-         "external_email" => "email@gmail.com",
          "external_id" => "990098-a329-4c37-998b-1c96878fb4c4",
          "external_name" => nil,
          "external_profile_background_url" => nil,
@@ -149,6 +148,10 @@ defmodule DiscourseApi.DevImpl do
        "like_count" => 0,
        "time_read" => 0
      }}
+  end
+
+  def get_sso_email(_) do
+    {:ok, %{"email" => "email@gmail.com"}}
   end
 
   def get_user_by_external_id(_) do
