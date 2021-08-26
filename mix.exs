@@ -59,8 +59,7 @@ defmodule DiscourseApi.MixProject do
       # These are the default files included in the package
       files: ~w(lib .formatter.exs mix.exs README*),
       licenses: ["Apache-2.0"],
-      links: %{"GitHub" => "https://github.com/nash-io/discourse_api"},
-      organization: "neonexchange"
+      links: %{"GitHub" => "https://github.com/nash-io/discourse_api"}
     ]
   end
 end
