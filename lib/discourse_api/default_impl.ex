@@ -20,6 +20,13 @@ defmodule DiscourseApi.DefaultImpl do
     get(endpoint)
   end
 
+  @spec get_sso_email(String.t()) :: {:ok | :error, map}
+  def get_sso_email(username) do
+    endpoint = base_url() <> "/u/#{username}/sso-email.json"
+
+    get(endpoint)
+  end
+
   @spec get_user_by_external_id(String.t()) :: {:ok | :error, map}
   def get_user_by_external_id(external_id) do
     endpoint = base_url() <> "u/by-external/#{external_id}.json"

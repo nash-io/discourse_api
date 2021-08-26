@@ -14,6 +14,11 @@ defmodule DiscourseApi do
     impl().get_user_by_id(id)
   end
 
+  @callback get_sso_email(String.t()) :: {atom, map | atom}
+  def get_sso_email(username) do
+    impl().get_sso_email(username)
+  end
+
   @callback get_user_by_external_id(String.t()) :: {atom, map | atom}
   def get_user_by_external_id(external_id) do
     impl().get_user_by_external_id(external_id)
