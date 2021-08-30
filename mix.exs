@@ -4,7 +4,7 @@ defmodule DiscourseApi.MixProject do
   def project do
     [
       app: :discourse_api,
-      version: "0.1.2",
+      version: "0.1.4",
       elixir: "~> 1.9",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -55,7 +55,7 @@ defmodule DiscourseApi.MixProject do
   defp package do
     [
       # This option is only needed when you don't want to use the OTP application name
-      name: "discourse_api",
+      name: "discourse_api_copy",
       # These are the default files included in the package
       files: ~w(lib .formatter.exs mix.exs README*),
       licenses: ["Apache-2.0"],
